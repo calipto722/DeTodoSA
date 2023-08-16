@@ -5,17 +5,28 @@
  */
 package detodosa;
 
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Pirrupi
  */
 public class BusquedaPorNombreView extends javax.swing.JInternalFrame {
-
+    //cabecera de la tabla
+    private DefaultTableModel modelo = new DefaultTableModel(){
+      
+      public boolean isCellEditabke (int f, int c){
+          return false;
+      }
+  };
+    
+    
     /**
      * Creates new form BusquedaPorNombreView
      */
     public BusquedaPorNombreView() {
         initComponents();
+        armarCabecera();
     }
 
     /**
@@ -31,14 +42,14 @@ public class BusquedaPorNombreView extends javax.swing.JInternalFrame {
         jLabel2 = new javax.swing.JLabel();
         jtNombre = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jtbNombre = new javax.swing.JTable();
+        jtProductos = new javax.swing.JTable();
 
         jLabel1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jLabel1.setText("Listado por Nombre");
 
         jLabel2.setText("Escriba los primeros Caracteres");
 
-        jtbNombre.setModel(new javax.swing.table.DefaultTableModel(
+        jtProductos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -49,7 +60,7 @@ public class BusquedaPorNombreView extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jtbNombre);
+        jScrollPane1.setViewportView(jtProductos);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -94,6 +105,26 @@ public class BusquedaPorNombreView extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jtNombre;
-    private javax.swing.JTable jtbNombre;
+    private javax.swing.JTable jtProductos;
     // End of variables declaration//GEN-END:variables
-}
+  
+    //Agrego metodos
+    // Creo metodo para la cabezera de la tabla
+    private void armarCabecera(){
+     modelo.addColumn("Codigo");
+     modelo.addColumn("Descripcion");   
+     modelo.addColumn("Precio"); 
+     modelo.addColumn("Stock"); 
+
+     jtProductos.setModel(modelo);
+    }
+
+
+
+
+
+
+
+
+
+} //llave final
