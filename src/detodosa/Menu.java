@@ -13,6 +13,7 @@ import java.util.TreeSet;
  */
 public class Menu extends javax.swing.JFrame {
  public static TreeSet<Producto> listaproductos= new TreeSet<>();
+
     /**
      * Creates new form Menu
      */
