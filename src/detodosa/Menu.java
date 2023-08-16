@@ -106,4 +106,4 @@ listaproductos.add(new Producto(10,"Azucar x kg",180.76,5,Categoria.COMESTIBLE))
 listaproductos.add(new Producto(18,"Lavandina x lt",264.35,12,Categoria.LIMPIEZA));
 listaproductos.add(new Producto(28,"Boss x 75ml", 4300, 4, Categoria.PERFUMERIA));
 
- }
+ }}
