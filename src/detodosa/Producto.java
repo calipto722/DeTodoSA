@@ -8,12 +8,13 @@ package detodosa;
  *
  * @author Sofia
  */
-public class Producto {
+public class Producto implements Comparable <Producto>{
     private int codigo;
     private String descripcion;
     private double precio;
     private int stock;
     private Categoria rubro;
+    
 
     public Producto(int codigo, String descripcion, double precio, int stock, Categoria rubro) {
         this.codigo = codigo;
@@ -61,6 +62,18 @@ public class Producto {
 
     public void setRubro(Categoria rubro) {
         this.rubro = rubro;
+    }
+
+    @Override
+    public int compareTo(Producto t) {
+        if (codigo == t.codigo) {
+            return 0;
+       }else if  (codigo > t.codigo){
+            return 1;
+       } else {
+            return -1;
+        }
+         
     }
          
     
