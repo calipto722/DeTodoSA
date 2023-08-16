@@ -5,18 +5,21 @@
  */
 package detodosa;
 
+import java.util.TreeSet;
+
 /**
- *
+ *8
  * @author Pirrupi
  */
 public class Menu extends javax.swing.JFrame {
-
+ public static TreeSet<Producto> listaproductos= new TreeSet<>();
 
     /**
      * Creates new form Menu
      */
     public Menu() {
         initComponents();
+        cargarProductos();
     }
 
     /**
@@ -86,40 +89,8 @@ public class Menu extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Menu().setVisible(true);
-            }
-        });
-    }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane escritorio;
@@ -131,4 +102,9 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JMenuItem jmcPrecio;
     private javax.swing.JMenuItem jmcRubro;
     // End of variables declaration//GEN-END:variables
-}
+ private void cargarProductos(){
+listaproductos.add(new Producto(10,"Azucar x kg",180.76,5,Categoria.COMESTIBLE));
+listaproductos.add(new Producto(18,"Lavandina x lt",264.35,12,Categoria.LIMPIEZA));
+listaproductos.add(new Producto(28,"Boss x 75ml", 4300, 4, Categoria.PERFUMERIA));
+
+ }}
