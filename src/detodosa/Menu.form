@@ -20,6 +20,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Consultas"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmConsultaActionPerformed"/>
+          </Events>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="jmcRubro">
               <Properties>
@@ -30,6 +33,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Por Nombre"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmcNombreActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jmcPrecio">
               <Properties>

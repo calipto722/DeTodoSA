@@ -61,11 +61,21 @@ public class Menu extends javax.swing.JFrame {
         jMenuBar1.add(jmAdmin);
 
         jmConsulta.setText("Consultas");
+        jmConsulta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmConsultaActionPerformed(evt);
+            }
+        });
 
         jmcRubro.setText("Por Rubro");
         jmConsulta.add(jmcRubro);
 
         jmcNombre.setText("Por Nombre");
+        jmcNombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmcNombreActionPerformed(evt);
+            }
+        });
         jmConsulta.add(jmcNombre);
 
         jmcPrecio.setText("Por Precio");
@@ -88,6 +98,20 @@ public class Menu extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jmConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmConsultaActionPerformed
+        
+    
+    }//GEN-LAST:event_jmConsultaActionPerformed
+
+    private void jmcNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmcNombreActionPerformed
+            escritorio.removeAll();
+        escritorio.repaint();
+        BusquedaPorNombreView bpn =new BusquedaPorNombreView();
+        bpn.setVisible(true);
+        escritorio.add(bpn);
+        escritorio.moveToFront(bpn);
+    }//GEN-LAST:event_jmcNombreActionPerformed
 
 
 
