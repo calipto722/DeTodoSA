@@ -9,10 +9,10 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author Pirrupi
+ * @author noelia
  */
-public class BusquedaPorNombreView extends javax.swing.JInternalFrame {
-    //cabecera de la tabla
+public class BusquedaPorRubroView extends javax.swing.JInternalFrame {
+
     private DefaultTableModel modelo = new DefaultTableModel() {
 
         public boolean isCellEditabke(int f, int c) {
@@ -20,12 +20,12 @@ public class BusquedaPorNombreView extends javax.swing.JInternalFrame {
         }
     };
 
-    
     /**
-     * Creates new form BusquedaPorNombreView
+     * Creates new form BusquedaPorRubroView
      */
-    public BusquedaPorNombreView() {
+    public BusquedaPorRubroView() {
         initComponents();
+        cargabox();
         armarCabecera();
     }
 
@@ -40,20 +40,22 @@ public class BusquedaPorNombreView extends javax.swing.JInternalFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jtNombre = new javax.swing.JTextField();
+        jcCategoria = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
         jtProductos = new javax.swing.JTable();
 
-        setClosable(true);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jLabel1.setText("Listado por Nombre");
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Listado de Productos por Rubro");
+        jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
-        jLabel2.setText("Escriba los primeros Caracteres");
+        jLabel2.setText("Elija Rubro :");
 
-        jtNombre.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                jtNombreKeyReleased(evt);
+        jcCategoria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcCategoriaActionPerformed(evt);
             }
         });
 
@@ -75,59 +77,52 @@ public class BusquedaPorNombreView extends javax.swing.JInternalFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(124, 124, 124)
-                .addComponent(jLabel1)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(100, 100, 100)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addGap(18, 18, 18)
+                        .addComponent(jcCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel1))
+                .addContainerGap(79, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(125, Short.MAX_VALUE))
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGap(27, 27, 27)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel2)
-                    .addComponent(jtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jcCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(60, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(68, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jtNombreKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtNombreKeyReleased
-        borrarFilas();
-        for (Producto prod : Menu.listaproductos) {
-            if (prod.getDescripcion().startsWith(jtNombre.getText())) {
-                modelo.addRow(new Object[]{
-                    prod.getCodigo(),
-                    prod.getDescripcion(),
-                    prod.getPrecio(),
-                    prod.getStock()
-                });}
-        }
-// TODO add your
-    }//GEN-LAST:event_jtNombreKeyReleased
+    private void jcCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcCategoriaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jcCategoriaActionPerformed
 
-
+    /**
+     * @param args the command line arguments
+     */
+  
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jtNombre;
+    private javax.swing.JComboBox<Categoria> jcCategoria;
     private javax.swing.JTable jtProductos;
     // End of variables declaration//GEN-END:variables
 
-    //Agrego metodos
-    // Creo metodo para la cabezera de la tabla
     private void armarCabecera() {
         modelo.addColumn("Codigo");
         modelo.addColumn("Descripcion");
@@ -136,12 +131,9 @@ public class BusquedaPorNombreView extends javax.swing.JInternalFrame {
 
         jtProductos.setModel(modelo);
     }
-
-    private void borrarFilas() {
-        int f = jtProductos.getRowCount() - 1;
-        for (; f >= 0; f--) {
-            modelo.removeRow(f);
-        }
+    private void cargabox(){
+        jcCategoria.addItem(Categoria.COMESTIBLE);
+        jcCategoria.addItem(Categoria.LIMPIEZA);
+        jcCategoria.addItem(Categoria.PERFUMERIA);
     }
-
-} //llave final
+}
