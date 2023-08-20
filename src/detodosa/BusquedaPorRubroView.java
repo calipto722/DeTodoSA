@@ -44,6 +44,7 @@ public class BusquedaPorRubroView extends javax.swing.JInternalFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jtProductos = new javax.swing.JTable();
 
+        setClosable(true);
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -108,6 +109,19 @@ public class BusquedaPorRubroView extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jcCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcCategoriaActionPerformed
+       modelo.setRowCount(0);
+        for (Producto prod: Menu.listaproductos) {
+            if (prod.getRubro()== jcCategoria.getSelectedItem()) {
+                 modelo.addRow(new Object[]{
+                    prod.getCodigo(),
+                    prod.getDescripcion(),
+                    prod.getPrecio(),
+                    prod.getStock()
+                        
+                });
+             
+            }
+        }
         // TODO add your handling code here:
     }//GEN-LAST:event_jcCategoriaActionPerformed
 
@@ -135,5 +149,5 @@ public class BusquedaPorRubroView extends javax.swing.JInternalFrame {
         jcCategoria.addItem(Categoria.COMESTIBLE);
         jcCategoria.addItem(Categoria.LIMPIEZA);
         jcCategoria.addItem(Categoria.PERFUMERIA);
-    }
-}
+    }}
+

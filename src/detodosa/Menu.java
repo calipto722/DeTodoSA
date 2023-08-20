@@ -8,11 +8,13 @@ package detodosa;
 import java.util.TreeSet;
 
 /**
- *8
+ * 8
+ *
  * @author Pirrupi
  */
 public class Menu extends javax.swing.JFrame {
- public static TreeSet<Producto> listaproductos= new TreeSet<>();
+
+    public static TreeSet<Producto> listaproductos = new TreeSet<>();
 
     /**
      * Creates new form Menu
@@ -21,7 +23,8 @@ public class Menu extends javax.swing.JFrame {
         initComponents();
         cargarProductos();
     }
- public static void main(String args[]) {
+
+    public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -52,6 +55,7 @@ public class Menu extends javax.swing.JFrame {
             }
         });
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -72,22 +76,29 @@ public class Menu extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        escritorio.setBackground(java.awt.Color.darkGray);
+        escritorio.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         escritorio.setForeground(new java.awt.Color(0, 102, 153));
 
         javax.swing.GroupLayout escritorioLayout = new javax.swing.GroupLayout(escritorio);
         escritorio.setLayout(escritorioLayout);
         escritorioLayout.setHorizontalGroup(
             escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 972, Short.MAX_VALUE)
+            .addGap(0, 968, Short.MAX_VALUE)
         );
         escritorioLayout.setVerticalGroup(
             escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 469, Short.MAX_VALUE)
+            .addGap(0, 465, Short.MAX_VALUE)
         );
 
         jmAdmin.setText("Administracion");
 
         jmaProducto.setText("Productos");
+        jmaProducto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmaProductoActionPerformed(evt);
+            }
+        });
         jmAdmin.add(jmaProducto);
 
         jMenuBar1.add(jmAdmin);
@@ -137,21 +148,21 @@ public class Menu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jmConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmConsultaActionPerformed
-        
-    
+
+
     }//GEN-LAST:event_jmConsultaActionPerformed
 
     private void jmcNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmcNombreActionPerformed
-            escritorio.removeAll();
+        escritorio.removeAll();
         escritorio.repaint();
-        BusquedaPorNombreView bpn =new BusquedaPorNombreView();
+        BusquedaPorNombreView bpn = new BusquedaPorNombreView();
         bpn.setVisible(true);
         escritorio.add(bpn);
         escritorio.moveToFront(bpn);
     }//GEN-LAST:event_jmcNombreActionPerformed
 
     private void jmcRubroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmcRubroActionPerformed
-escritorio.removeAll();
+        escritorio.removeAll();
         escritorio.repaint();
         BusquedaPorRubroView bpr = new BusquedaPorRubroView();
         bpr.setVisible(true);
@@ -159,7 +170,15 @@ escritorio.removeAll();
         escritorio.moveToFront(bpr);        // TODO add your handling code here:
     }//GEN-LAST:event_jmcRubroActionPerformed
 
-
+    private void jmaProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmaProductoActionPerformed
+      escritorio.removeAll();
+      escritorio.repaint();
+GestionProducto btr = new GestionProducto();
+btr.setVisible(true);
+escritorio.add(btr);
+escritorio.moveToFront(btr);
+// TODO add your handling code here:
+    }//GEN-LAST:event_jmaProductoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -172,9 +191,11 @@ escritorio.removeAll();
     private javax.swing.JMenuItem jmcPrecio;
     private javax.swing.JMenuItem jmcRubro;
     // End of variables declaration//GEN-END:variables
- private void cargarProductos(){
-listaproductos.add(new Producto(10,"Azucar x kg",180.76,5,Categoria.COMESTIBLE));
-listaproductos.add(new Producto(18,"Lavandina x lt",264.35,12,Categoria.LIMPIEZA));
-listaproductos.add(new Producto(28,"Boss x 75ml", 4300, 4, Categoria.PERFUMERIA));
-
- }}
+ private void cargarProductos() {
+        listaproductos.add(new Producto(10, "Azucar x kg", 180.76, 5, Categoria.COMESTIBLE));
+        listaproductos.add(new Producto(18, "Lavandina x lt", 264.35, 12, Categoria.LIMPIEZA));
+        listaproductos.add(new Producto(28, "Boss x 75ml", 4300, 4, Categoria.PERFUMERIA));
+        listaproductos.add(new Producto(23, "Kdaf x 75ml", 4300, 4, Categoria.PERFUMERIA));
+        
+    }
+}

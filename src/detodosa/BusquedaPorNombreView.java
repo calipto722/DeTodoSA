@@ -104,7 +104,9 @@ public class BusquedaPorNombreView extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jtNombreKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtNombreKeyReleased
-        borrarFilas();
+modelo.setRowCount(0);
+//maera del video
+        //borrarFilas();
         for (Producto prod : Menu.listaproductos) {
             if (prod.getDescripcion().startsWith(jtNombre.getText())) {
                 modelo.addRow(new Object[]{
@@ -136,12 +138,12 @@ public class BusquedaPorNombreView extends javax.swing.JInternalFrame {
 
         jtProductos.setModel(modelo);
     }
-
+    //manera del video
     private void borrarFilas() {
         int f = jtProductos.getRowCount() - 1;
         for (; f >= 0; f--) {
             modelo.removeRow(f);
-        }
+    }
     }
 
 } //llave final
