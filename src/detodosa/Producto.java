@@ -9,7 +9,7 @@ package detodosa;
  * @author Sofia
  */
 public class Producto implements Comparable <Producto>{
-    private int codigo;
+    int codigo;
     private String descripcion;
     private double precio;
     private int stock;

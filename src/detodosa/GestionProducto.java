@@ -9,13 +9,14 @@ package detodosa;
  *
  * @author noelia
  */
-public class GestionProducto extends javax.swing.JFrame {
+public class GestionProducto extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form GestionProducto
      */
     public GestionProducto() {
         initComponents();
+        cargabox();
     }
 
     /**
@@ -55,25 +56,73 @@ public class GestionProducto extends javax.swing.JFrame {
         jLabel1.setToolTipText("");
 
         jtCodigo.setToolTipText("");
+        jtCodigo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtCodigoActionPerformed(evt);
+            }
+        });
+
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/detodosa/barra-de-busqueda (1).png"))); // NOI18N
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jLabel2.setText("Descripción");
+
+        jtDescripcion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtDescripcionActionPerformed(evt);
+            }
+        });
 
         jLabel3.setText("Precio");
 
         jtPrecio.setToolTipText("");
+        jtPrecio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtPrecioActionPerformed(evt);
+            }
+        });
 
         jLabel4.setText("Rubro");
         jLabel4.setToolTipText("");
 
-        jcRubro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jcRubro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcRubroActionPerformed(evt);
+            }
+        });
 
         jLabel5.setText("Stock");
 
+        jtStock.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtStockActionPerformed(evt);
+            }
+        });
+
         jbNuevo.setText("Nuevo");
+        jbNuevo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbNuevoActionPerformed(evt);
+            }
+        });
 
         jbGuardar.setText("Guardar");
+        jbGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbGuardarActionPerformed(evt);
+            }
+        });
 
         jbEliminar.setText("Eliminar");
+        jbEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbEliminarActionPerformed(evt);
+            }
+        });
 
         jbSalir.setText("Salir");
         jbSalir.setToolTipText("");
@@ -167,13 +216,75 @@ public class GestionProducto extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSalirActionPerformed
-      getContentPane().setVisible(false);  // TODO add your handling code here:
+         //TODO add your handling code here:
     }//GEN-LAST:event_jbSalirActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        int codigo = Integer.parseInt(jtCodigo.getText());
+        for (Producto produc : Menu.listaproductos) {
+            if (produc.getCodigo()== codigo) {
+                jtDescripcion.setText(produc.getDescripcion());
+              //  jtDescripcion.setEnabled(false);
+                
+                jtPrecio.setText(produc.getPrecio()+"");
+                //jtPrecio.setEnabled(false);
+                jtStock.setText(produc.getStock()+"");
+                //jtStock.setEnabled(false);
+            }
+    
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jtCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtCodigoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtCodigoActionPerformed
+
+    private void jtDescripcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtDescripcionActionPerformed
+
+    }//GEN-LAST:event_jtDescripcionActionPerformed
+
+    private void jtPrecioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtPrecioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtPrecioActionPerformed
+
+    private void jtStockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtStockActionPerformed
+
+    }//GEN-LAST:event_jtStockActionPerformed
+
+    private void jbNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbNuevoActionPerformed
+        jtCodigo.setText("");
+        jtDescripcion.setText("");
+        jtPrecio.setText("");
+        jtStock.setText("");// TODO add your handling code here:
+    }//GEN-LAST:event_jbNuevoActionPerformed
+
+    private void jbGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGuardarActionPerformed
+        int codigo = Integer.parseInt(jtCodigo.getText());
+        String descripcion = jtDescripcion.getText();
+        int stock = Integer.parseInt(jtStock.getText());
+        double precio = Integer.parseInt(jtPrecio.getText());
+        Menu.listaproductos.add(new Producto(codigo, descripcion, precio, stock, (Categoria)jcRubro.getSelectedItem()));
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbGuardarActionPerformed
+
+    private void jcRubroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcRubroActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jcRubroActionPerformed
+
+    private void jbEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEliminarActionPerformed
+       int codigo = Integer.parseInt(jtCodigo.getText());
+        for (Producto prod : Menu.listaproductos) {
+            if (codigo== prod.getCodigo()) {
+                Menu.listaproductos.remove(prod);
+            }
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbEliminarActionPerformed
 
     /**
      * @param args the command line arguments
      */
-  
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
@@ -186,11 +297,16 @@ public class GestionProducto extends javax.swing.JFrame {
     private javax.swing.JButton jbGuardar;
     private javax.swing.JButton jbNuevo;
     private javax.swing.JButton jbSalir;
-    private javax.swing.JComboBox<String> jcRubro;
+    private javax.swing.JComboBox<Categoria> jcRubro;
     private javax.swing.JLabel jlGestionProductos;
     private javax.swing.JTextField jtCodigo;
     private javax.swing.JTextField jtDescripcion;
     private javax.swing.JTextField jtPrecio;
     private javax.swing.JTextField jtStock;
     // End of variables declaration//GEN-END:variables
+private void cargabox() {
+        jcRubro.addItem(Categoria.COMESTIBLE);
+        jcRubro.addItem(Categoria.LIMPIEZA);
+        jcRubro.addItem(Categoria.PERFUMERIA);
+    }
 }
