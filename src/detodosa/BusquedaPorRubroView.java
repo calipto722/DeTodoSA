@@ -15,7 +15,7 @@ public class BusquedaPorRubroView extends javax.swing.JInternalFrame {
 
     private DefaultTableModel modelo = new DefaultTableModel() {
 
-        public boolean isCellEditabke(int f, int c) {
+        public boolean isCellEditable(int f, int c) {
             return false;
         }
     };

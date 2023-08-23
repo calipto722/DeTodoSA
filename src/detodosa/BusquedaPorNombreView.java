@@ -51,6 +51,11 @@ public class BusquedaPorNombreView extends javax.swing.JInternalFrame {
 
         jLabel2.setText("Escriba los primeros Caracteres");
 
+        jtNombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtNombreActionPerformed(evt);
+            }
+        });
         jtNombre.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 jtNombreKeyReleased(evt);
@@ -108,7 +113,7 @@ modelo.setRowCount(0);
 //maera del video
         //borrarFilas();
         for (Producto prod : Menu.listaproductos) {
-            if (prod.getDescripcion().startsWith(jtNombre.getText())) {
+            if (prod.getDescripcion().toLowerCase().startsWith(jtNombre.getText())) {
                 modelo.addRow(new Object[]{
                     prod.getCodigo(),
                     prod.getDescripcion(),
@@ -118,6 +123,10 @@ modelo.setRowCount(0);
         }
 // TODO add your
     }//GEN-LAST:event_jtNombreKeyReleased
+
+    private void jtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtNombreActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtNombreActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -5,6 +5,8 @@
  */
 package detodosa;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author noelia
@@ -17,6 +19,7 @@ public class GestionProducto extends javax.swing.JInternalFrame {
     public GestionProducto() {
         initComponents();
         cargabox();
+        
     }
 
     /**
@@ -216,7 +219,8 @@ public class GestionProducto extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSalirActionPerformed
-         //TODO add your handling code here:
+   //dispose sirve para serrar la ventana
+        dispose();  //TODO add your handling code here:
     }//GEN-LAST:event_jbSalirActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -224,16 +228,16 @@ public class GestionProducto extends javax.swing.JInternalFrame {
         for (Producto produc : Menu.listaproductos) {
             if (produc.getCodigo()== codigo) {
                 jtDescripcion.setText(produc.getDescripcion());
-              //  jtDescripcion.setEnabled(false);
-                
                 jtPrecio.setText(produc.getPrecio()+"");
-                //jtPrecio.setEnabled(false);
                 jtStock.setText(produc.getStock()+"");
-                //jtStock.setEnabled(false);
+              jbGuardar.setEnabled(false);
             }
-    
+           /*  si coloco la linea el boton queda encendido
+            else{
+                jbGuardar.setEnabled(true);
+            }*/
         }
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jtCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtCodigoActionPerformed
@@ -253,18 +257,22 @@ public class GestionProducto extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jtStockActionPerformed
 
     private void jbNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbNuevoActionPerformed
-        jtCodigo.setText("");
-        jtDescripcion.setText("");
-        jtPrecio.setText("");
-        jtStock.setText("");// TODO add your handling code here:
+        limpiar();// TODO add your handling code here:
+        jbGuardar.setEnabled(true);
     }//GEN-LAST:event_jbNuevoActionPerformed
 
     private void jbGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGuardarActionPerformed
-        int codigo = Integer.parseInt(jtCodigo.getText());
+      
+            
+              int codigo = Integer.parseInt(jtCodigo.getText());
         String descripcion = jtDescripcion.getText();
-        int stock = Integer.parseInt(jtStock.getText());
+        int stock1 = Integer.parseInt(jtStock.getText());
         double precio = Integer.parseInt(jtPrecio.getText());
-        Menu.listaproductos.add(new Producto(codigo, descripcion, precio, stock, (Categoria)jcRubro.getSelectedItem()));
+        Menu.listaproductos.add(new Producto(codigo, descripcion, precio, stock1, (Categoria)jcRubro.getSelectedItem()));
+        limpiar();
+        
+        
+        
         // TODO add your handling code here:
     }//GEN-LAST:event_jbGuardarActionPerformed
 
@@ -279,6 +287,7 @@ public class GestionProducto extends javax.swing.JInternalFrame {
                 Menu.listaproductos.remove(prod);
             }
         }
+        limpiar();
         // TODO add your handling code here:
     }//GEN-LAST:event_jbEliminarActionPerformed
 
@@ -309,4 +318,10 @@ private void cargabox() {
         jcRubro.addItem(Categoria.LIMPIEZA);
         jcRubro.addItem(Categoria.PERFUMERIA);
     }
+private void limpiar(){
+    jtCodigo.setText("");
+        jtDescripcion.setText("");
+        jtPrecio.setText("");
+        jtStock.setText("");
+}
 }
